@@ -10,9 +10,9 @@ import store from './store';
 class App extends Component {
 
 UNSAFE_componentWillMount(){
-    fetch("http://localhost:8000/products").then(res => res.json()).then(data => this.setState({
-      products: data,
-      filteredProducts: data,
+    fetch("https://raw.githubusercontent.com/shiheb/ecommerce-shopping-cart-app-redux/master/public/db.json").then(res => res.json()).then(data => this.setState({
+      payload: data.products,
+      filteredProducts: data.products,
     }));
 
     if (localStorage.getItem("cartItems")) {
@@ -22,11 +22,6 @@ UNSAFE_componentWillMount(){
     }
 
   }
-
-handleChangePrice(e){
-  this.setState({price: e.target.value});
-  this.listProducts();
-}
 
   render(){
   return (

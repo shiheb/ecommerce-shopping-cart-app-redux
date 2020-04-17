@@ -2,12 +2,11 @@ import { FETCH_PRODUCTS , FILTER_PRODUCTS_BY_SIZE, ORDER_PRODUCTS_BY_PRICE,FILTE
 
 export const fetchProducts = () => (dispatch) => {
 
-
-    fetch("http://localhost:8000/products").then(res => res.json()).then( data => 
+fetch("https://raw.githubusercontent.com/shiheb/ecommerce-shopping-cart-app-redux/master/public/db.json").then(res => res.json()).then( data => 
         {
         return  dispatch({
             type: FETCH_PRODUCTS,
-            payload: data,
+            payload: data.products,
         })
         } );
     
@@ -37,8 +36,6 @@ export const filterProductsByPrice = (products, price) => (dispatch) => {
             }
         })
 }
-
-
 
 export const sortProducts = (items, sort) => (dispatch) => {
 
